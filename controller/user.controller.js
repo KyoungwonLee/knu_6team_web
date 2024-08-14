@@ -8,17 +8,18 @@ userController.post("/token", (req, res) => {
   console.log(req.body); //확인
   try {
     const tokenVerify = jwt.verify(tokenKey, process.env.JWT_SECRET); //검증
+
+    if (tokenVerify) {
+      return res
+        .status(200)
+        .json({ isVerify: true, message: "토큰이 일치합니다." });
+    } else {
+      return res
+        .status(400)
+        .json({ isVerify: false, message: "토큰이 일치하지 않습니다." });
+    }
   } catch (err) {
     //err
-  }
-  if (tokenVerify) {
-    return res
-      .status(200)
-      .json({ isVerify: true, message: "토큰이 일치합니다." });
-  } else {
-    return res
-      .status(400)
-      .json({ isVerify: false, message: "토큰이 일치하지 않습니다." });
   }
 });
 
