@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const { createUser, getUserByEmail } = require("../service/user.service");
 const userController = require("express").Router();
 
-userController.post("/api/user/token", (req, res) => {
+userController.post("/token", (req, res) => {
   const { tokenKey } = req.body;
   console.log(req.body); //확인
   try {
