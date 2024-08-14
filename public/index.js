@@ -41,3 +41,17 @@ const moveSignup = (document.getElementById("move_sign_up").onclick =
   function () {
     window.location.href = "http://localhost:7999/signup";
   });
+//로그인 화면 이동
+document.getElementById("move_sign_in").onclick = function () {
+  window.location.href = "http://localhost:7999/signin";
+};
+
+//마이페이지 이동
+document.getElementById("move_my_page").onclick = function () {
+  window.location.href = "http://localhost:7999/mypage";
+};
+
+// 회원가입
+document.getElementById("move_sign_up").onclick = function () {
+  window.location.href = "http://localhost:7999/signuop";
+};

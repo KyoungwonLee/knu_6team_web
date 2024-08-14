@@ -13,6 +13,7 @@ signinButton.addEventListener("click", async () => {
         "Content-Type": "application/json",
       },
     });
+
     if (signinResult.ok) {
       const result = await signinResult.json();
       console.log(result);
