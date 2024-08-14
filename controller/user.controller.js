@@ -3,6 +3,25 @@ const jwt = require("jsonwebtoken");
 const { createUser, getUserByEmail } = require("../service/user.service");
 const userController = require("express").Router();
 
+userController.post("/api/user/token", (req, res) => {
+  const { tokenKey } = req.body;
+  console.log(req.body); //확인
+  try {
+    const tokenVerify = jwt.verify(tokenKey, process.env.JWT_SECRET); //검증
+  } catch (err) {
+    //err
+  }
+  if (tokenVerify) {
+    return res
+      .status(200)
+      .json({ isVerify: true, message: "토큰이 일치합니다." });
+  } else {
+    return res
+      .status(400)
+      .json({ isVerify: false, message: "토큰이 일치하지 않습니다." });
+  }
+});
+
 userController.post("/signin", async (req, res) => {
   const body = req.body;
   // 사용자로부터 email과 password를 받음
