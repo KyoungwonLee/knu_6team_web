@@ -3,6 +3,26 @@ const jwt = require("jsonwebtoken");
 const { createUser, getUserByEmail } = require("../service/user.service");
 const userController = require("express").Router();
 
+userController.post("/token", (req, res) => {
+  const { userToken } = req.body;
+  console.log("", userToken); //확인
+  try {
+    const tokenVerify = jwt.verify(userToken, process.env.JWT_SECRET); //검증
+    console.log(tokenVerify);
+    if (tokenVerify) {
+      return res
+        .status(200)
+        .json({ isVerify: true, message: "토큰이 일치합니다." });
+    } else {
+      return res
+        .status(400)
+        .json({ isVerify: false, message: "토큰이 일치하지 않습니다." });
+    }
+  } catch (err) {
+    //err
+  }
+});
+
 userController.post("/signin", async (req, res) => {
   const body = req.body;
   // 사용자로부터 email과 password를 받음
@@ -61,6 +81,7 @@ userController.post("/", async (req, res) => {
       .status(400)
       .json({ isError: true, message: "잘못된 비밀번호 형식입니다." });
   }
+  //  비밀번호 암호화
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
 
