@@ -7,7 +7,7 @@ const fetchProductList = async () => {
     });
     if (fetchResult.ok) {
       const result = await fetchResult.json();
-      return result.data;
+      return result.data; //리스트만 리턴됨
     } else {
       return null;
     }
@@ -29,7 +29,7 @@ const renderProductList = async () => {
     itemElem.innerHTML = `
         <div>${v.title}</div>
         <div>
-            <img src="${v.imgUrl}"/>
+            <a href="./detail?id=${v.productId}"><img src="${v.imgUrl}"/></a>
         </div>
         <div>[가격]: ${v.price}</div>
         <div>[상세설명]: ${v.description}</div>

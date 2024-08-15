@@ -1,0 +1,35 @@
+body {
+  background-color: lightslategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: white;
+  margin: 40px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 15px 30px;
+  margin: 30px 30px 30px 30px;
+  border-radius: 8px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+  background-color: aliceblue;
+  color: #1e6b7b;
+  border: 3px solid aliceblue;
+}
+
+.btn:hover {
+  color: #1e6b7b;
+  background: aliceblue;
+  animation: 1s linear 0 ChangeButton;
+  transform: scale(1.3);
+}
