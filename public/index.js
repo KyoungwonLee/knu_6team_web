@@ -46,15 +46,17 @@ document.getElementById("move_product").onclick = function () {
   window.location.href = "http://localhost:7999/product";
 };
 
+// 로그인 상태 체크
 const token = localStorage.getItem("token");
 if (token) {
-  // 로그인 상태일 때, 버튼 숨기기
   document.getElementById("move_sign_in").style.display = "none";
   document.getElementById("move_sign_up").style.display = "none";
+  document.getElementById("logout_button").style.display = "inline-block";
+  document.getElementById("move_my_page").style.display = "inline-block";
 } else {
-  // 로그인 상태가 아닐 때 버튼 보이기
   document.getElementById("move_sign_in").style.display = "inline-block";
   document.getElementById("move_sign_up").style.display = "inline-block";
+  document.getElementById("move_my_page").style.display = "none";
 }
 
 document.getElementById("logout_button").onclick = function () {

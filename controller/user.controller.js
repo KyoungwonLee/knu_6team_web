@@ -118,4 +118,19 @@ userController.post("/", async (req, res) => {
   }
 });
 
+// [client] [get] /api/user/me
+userController.get("/me", (req, res) => {
+  try {
+    const token = req.headers["authorization"];
+    console.log({ token });
+    const userData = jwt.decode(token);
+    console.log(userData);
+
+    return res.json({ result: true, nickname: userData.nickname });
+  } catch (err) {
+    console.log(err);
+    return res.json({ result: false, nickname: null });
+  }
+});
+
 module.exports = userController;

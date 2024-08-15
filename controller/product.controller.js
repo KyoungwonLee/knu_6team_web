@@ -78,4 +78,15 @@ productController.post("/cart", async (req, res) => {
   } catch (err) {}
 });
 
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
+  } catch (err) {}
+});
+
 module.exports = productController;

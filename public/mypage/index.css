@@ -1,64 +1,52 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: lightslategray;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background-color: #f0f0f0;
 }
 
-p {
-  color: black;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-div {
-  width: 100%;
-  max-width: 400px;
-  padding: 40px;
-  background-color: white;
+.center-div {
+  width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.nickname-password-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 30px;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
+.nickname,
+.order {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
   border: none;
   border-radius: 5px;
-  background-color: lightslategray;
+  background-color: #007bff;
   color: white;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 15px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  background-color: grey;
+.nickname:hover,
+.order:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-button:last-of-type {
-  margin-bottom: 0;
-}
-
-input:focus,
-button:focus {
-  outline: none;
-  border: 1px solid lightslategray;
+.nickname:active,
+.order:active {
+  background-color: #003d80;
+  transform: scale(0.98);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -114,6 +114,10 @@ function setPrice(id) {
       e.orderCount = parseInt(document.getElementById(`count-${id}`).value, 10);
     }
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1ffe5553c87219c89a2fd7a39ebd11018ad1331
   localStorage.setItem("products", JSON.stringify(List));
 }
 

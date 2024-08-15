@@ -1,39 +1,37 @@
-/* Backend로부터 토큰이 유효한지 여부를 받아 그 여부를 프론트로 반환한다. */
-function handleTokenVerification(response) {
+async function getUserNickname() {
+  const getResult = await fetch("/api/user/me", {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  });
+  if (getResult.ok) {
+    const result = await getResult.json();
+    const nickname = result.nickname;
+    return nickname;
+  }
+  return "";
+}
+
+async function handleTokenVerification(response) {
   if (response.isVerify) {
     console.log("Token is valid. Access granted.");
-<<<<<<< HEAD
+    const nickname = await getUserNickname();
+    console.log(nickname);
+    const nicknameDisplay = document.getElementById("nickname-display");
+    nicknameDisplay.innerHTML = nickname;
   } else {
     if (localStorage.getItem("token")) {
       localStorage.removeItem("token");
     }
-    window.location.href = "/signin";
-=======
->>>>>>> a625a0e861ceee5c392becb59ad95b68aed7c17a
+    window.location.href = "http://localhost:7999/signin";
   }
 }
 
-/* front --> back 토큰 전송 과정 */
 window.addEventListener("DOMContentLoaded", async () => {
   try {
-<<<<<<< HEAD
     const userToken = localStorage.getItem("token");
     console.log("token", userToken);
-    if (!userToken) {
-      window.location.href = "/signin";
-    }
-=======
-    const userToken = await localStorage.getItem("token");
-    // console.log("token", userToken);
 
-    // 토큰이 없을 때 (즉, 로그인을 하지 않았을 때)
-    if (!userToken) {
-      alert("로그인을 해주세요!");
-      window.location.href = "http://localhost:7999/signin";
-    }
-
-    // 토큰을 Backend로 보내준다.
->>>>>>> a625a0e861ceee5c392becb59ad95b68aed7c17a
     const sendResult = await fetch("/api/user/token", {
       method: "post",
       body: JSON.stringify({ userToken }),
@@ -42,19 +40,18 @@ window.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    // 올바르게 완료되면 handleTokenVerifiation 함수를 이용하여 여부를 프론트로 전달
     if (sendResult.ok) {
       const result = await sendResult.json();
-      // result = {isVerify: true }()
       handleTokenVerification(result);
     } else {
       console.log("유효성 검사 실패");
     }
   } catch (err) {
-    // err 처리
+    console.error(err);
   }
 });
 
+// 닉네임 수정 관련 코드
 document
   .getElementById("edit-nickname-button")
   .addEventListener("click", function () {
@@ -70,30 +67,25 @@ document
   });
 
 function toggleNicknameEdit() {
-  const nicknameDisplay = document.getElementById("nickname");
-  const emailDisplay = document.getElementById("email");
+  const nicknameDisplay = document.getElementById("nickname-display");
   const nicknameInput = document.getElementById("nickname-input");
-  const editButton = document.getElementById("edit-nickname-button");
-  const cartButton = document.getElementById("cart");
 
   if (nicknameInput.style.display === "none") {
     nicknameInput.value = nicknameDisplay.textContent;
     nicknameDisplay.style.display = "none";
-    emailDisplay.style.display = "none";
-    editButton.style.display = "none";
-    cartButton.style.display = "none";
     nicknameInput.style.display = "block";
     nicknameInput.focus();
   } else {
-    nicknameDisplay.textContent = nicknameInput.value;
+    const newNickname = nicknameInput.value;
+    nicknameDisplay.textContent = newNickname;
+    // localStorage.setItem("nickname", newNickname);
+
     nicknameInput.style.display = "none";
     nicknameDisplay.style.display = "block";
-    emailDisplay.style.display = "block";
-    editButton.style.display = "block";
-    cartButton.style.display = "block";
   }
 }
 
+// 장바구니 버튼 클릭 시 장바구니 페이지로 이동
 document.addEventListener("DOMContentLoaded", function () {
   const orderButton = document.querySelector(".order");
 
