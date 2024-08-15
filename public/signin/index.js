@@ -18,6 +18,8 @@ signinButton.addEventListener("click", async () => {
       const result = await signinResult.json();
       console.log(result);
       localStorage.setItem("token", result.token);
+      // 로그인 후 메인 페이지로 이동
+      window.location.href = "http://localhost:7999";
     } else {
       alert("(!)로그인 오류");
     }

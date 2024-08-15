@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 const { createUser, getUserByEmail } = require("../service/user.service");
 const userController = require("express").Router();
 
+/* front로부터 토큰을 전달받아 유효성을 판단하는 부분 */
 userController.post("/token", (req, res) => {
   const { userToken } = req.body;
-  console.log("", userToken); //확인
+  console.log("", userToken); // token 확인
   try {
     const tokenVerify = jwt.verify(userToken, process.env.JWT_SECRET); //검증
     console.log(tokenVerify);
@@ -19,7 +20,25 @@ userController.post("/token", (req, res) => {
         .json({ isVerify: false, message: "토큰이 일치하지 않습니다." });
     }
   } catch (err) {
-    //err
+    // err
+  }
+});
+
+userController.post("/signup", async (req, res) => {
+  const body = req.body;
+  const email = body.email;
+
+  const user = await getUserByEmail(email);
+  if (!user) {
+    return res.json({
+      result: true,
+      message: "중복된 이메일이 없습니다. 회원가입 가능.",
+    });
+  } else {
+    return res.json({
+      result: false,
+      message: "중복된 이메일이 있습니다. 다른 이메일로 입력하세요",
+    });
   }
 });
 
@@ -34,7 +53,7 @@ userController.post("/signin", async (req, res) => {
       .status(400)
       .json({ result: false, message: "(!)로그인 정보가 올바르지 않습니다." });
   }
-  // email을 기준으로 DB에서 유저 데이터를 꺼내와야 함.
+  // email을 기준으로 DB에서 유저 데이터를 꺼내와야 한다.
   const user = await getUserByEmail(email);
   // 만약 유저 정보가 없다면 나가라.
   if (!user) {
@@ -42,6 +61,7 @@ userController.post("/signin", async (req, res) => {
       .status(404)
       .json({ result: false, message: "(!)회원정보가 없습니다." });
   }
+
   // User가 실제 있는 구간
   const isValidPassword = bcrypt.compareSync(password, user.password);
   if (isValidPassword) {

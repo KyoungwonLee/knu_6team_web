@@ -1,4 +1,5 @@
 const User = require("../schema/user.schema");
+
 // user = {email: "", nickname: "", password: ""}
 const createUser = async (user) => {
   try {
