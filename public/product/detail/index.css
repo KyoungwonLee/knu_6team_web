@@ -1,0 +1,117 @@
+body {
+  background-color: lightslategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header-image {
+  width: 65px;
+  height: auto;
+  margin-right: 20px;
+}
+
+p {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#product-wrapper {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 600px; /* 확대된 너비 */
+  width: 100%;
+  display: flex; /* 플렉스 컨테이너로 변경 */
+  gap: 24px; /* 이미지와 내용 사이의 간격 */
+  margin: 0 auto;
+  align-items: flex-start; /* 내용이 위쪽에 정렬되도록 설정 */
+}
+
+#product-wrapper img {
+  max-width: 300px; /* 이미지 최대 너비 조정 */
+  height: auto;
+  border-radius: 8px;
+}
+
+#product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+  font-family: "Arial", sans-serif;
+  font-size: 32px;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.description {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.stock {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  background-color: #1e6b7b;
+  color: white;
+  border: 2px solid #1e6b7b;
+  transition: background-color 0.25s, color 0.25s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.product-button:hover {
+  background-color: white;
+  color: #1e6b7b;
+}
+
+#quantity {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 80px; /* 입력 박스 크기 조정 */
+  max-width: 100%; /* 최대 너비 설정 */
+}

@@ -21,6 +21,8 @@ signupButton.addEventListener("click", async () => {
     });
     if (signupResult.ok) {
       alert("회원가입 성공");
+      // 회원가입 후 로그인 페이지로 이동
+      window.location.href = "http://localhost:7999/signin";
     } else {
       alert("(!)회원가입 실패");
     }

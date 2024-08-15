@@ -27,13 +27,13 @@ const renderProductList = async () => {
   productList.forEach((v) => {
     const itemElem = document.createElement("div");
     itemElem.innerHTML = `
-        <div>${v.title}</div>
-        <div>
-            <a href="./detail?id=${v.productId}"><img src="${v.imgUrl}"/></a>
-        </div>
-        <div>[가격]: ${v.price}</div>
-        <div>[상세설명]: ${v.description}</div>
-        <div>[재고]: ${v.stock}</div>
+    <h2 class="title">${v.title}</h2>
+    <div>
+        <a href="./detail?id=${v.productId}"><img src="${v.imgUrl}"/></a>
+    </div>
+    <div class="price">[가격]: ${v.price}</div>
+    <div class="description">[상세설명]: ${v.description}</div>
+    <div class="stock">[재고]: ${v.stock}</div>
     `;
     productListWrapper.append(itemElem);
   });

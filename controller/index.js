@@ -4,4 +4,5 @@ const userController = require("./user.controller");
 
 apiController.use("/user", userController);
 apiController.use("/product", productController);
+
 module.exports = apiController;
