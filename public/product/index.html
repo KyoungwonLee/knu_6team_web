@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="index.css" />
     <style>
       /* styles.css */
 
@@ -32,7 +33,41 @@
       }
     </style>
   </head>
+  <style>
+    /* styles.css */
+
+    #product-list-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px; /* 간격 조정 */
+      padding: 16px; /* 여백 추가 */
+    }
+
+    #product-list-wrapper > div {
+      border: 1px solid #ddd; /* 테두리 추가 */
+      border-radius: 8px; /* 모서리 둥글게 */
+      padding: 16px; /* 안쪽 여백 */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+      background-color: #fff; /* 배경색 추가 */
+      text-align: center; /* 가운데 정렬 */
+    }
+    .title {
+      font-family: "Arial", sans-serif; /* 글꼴 설정 */
+      font-size: 16px; /* 기본 폰트 크기 */
+      color: 333;
+    }
+
+    #product-list-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px; /* 이미지 모서리 둥글게 */
+    }
+  </style>
   <body>
+    <div class="header">
+      <img src="/images/doori.png" alt="doori" class="header-image" />
+      <p>DOORI MALL</p>
+    </div>
     <section id="product-list-wrapper"></section>
   </body>
 </html>

@@ -1,4 +1,5 @@
 const User = require("../schema/user.schema");
+
 // user = {email: "", nickname: "", password: ""}
 const createUser = async (user) => {
   try {
@@ -9,9 +10,10 @@ const createUser = async (user) => {
   }
 };
 
-const getUser = async (email, password) => {
+/* const getUser = async (email, password) => {
   const user = await User.findOne({});
 };
+ */
 
 const getUserByEmail = async (email) => {
   try {

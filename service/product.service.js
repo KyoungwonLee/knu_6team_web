@@ -1,5 +1,6 @@
 const Product = require("../schema/product.schema");
 
+// 상품 리스트 받기
 const getProductList = async () => {
   try {
     const productList = await Product.find();
@@ -8,9 +9,18 @@ const getProductList = async () => {
   } catch (err) {}
 };
 
+// 상품 1개 받기
+// 인자로 Id를 받아서 찾아냄
 const getProduct = async (productId) => {
   try {
     const product = await Product.findOne({ productId });
+    return product;
+  } catch (error) {}
+};
+const getProductByUid = async (productId) => {
+  try {
+    const product = await Product.findById(productId);
+    console.log(product);
     return product;
   } catch (error) {}
 };
@@ -18,4 +28,5 @@ const getProduct = async (productId) => {
 module.exports = {
   getProductList,
   getProduct,
+  getProductByUid,
 };

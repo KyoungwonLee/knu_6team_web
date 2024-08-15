@@ -1,4 +1,8 @@
-const { getProductList, getProduct } = require("../service/product.service");
+const {
+  getProductList,
+  getProduct,
+  getProductByUid,
+} = require("../service/product.service");
 
 const productController = require("express").Router();
 
@@ -25,10 +29,74 @@ productController.get("/", async (req, res) => {
 productController.get("/detail/:id", async (req, res) => {
   try {
     const productId = req.params.id;
-    console.log({ productId });
+
     const product = await getProduct(productId);
 
     return res.json({ result: true, data: product });
+  } catch (err) {}
+});
+productController.get("/detail-by-uid/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+
+    const product = await getProductByUid(productId);
+    console.log(product);
+    return res.json({ result: true, data: product });
+  } catch (err) {}
+});
+
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
+  } catch (err) {}
+});
+
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
+  } catch (err) {}
+});
+
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
+  } catch (err) {}
+});
+
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
+  } catch (err) {}
+});
+
+productController.post("/cart", async (req, res) => {
+  try {
+    const cart = req.body;
+    let cartarray = [];
+    cart.forEach((v) => {
+      cartarray.push(v);
+    });
+    return res.json({ result: true, data: cartarray });
   } catch (err) {}
 });
 
