@@ -1,7 +1,11 @@
 const cartItems = localStorage.getItem("products");
 // const items = JSON.parse(cartItems); //파싱
+<<<<<<< HEAD
 let cartList_ = JSON.parse(localStorage.getItem("products")) || [];
 const totPrice = document.createElement("div");
+=======
+let cartList = JSON.parse(localStorage.getItem("products")) || [];
+>>>>>>> 24ae57a59530b1ffc6150c69c2dfa7fb20cfd84c
 const fetchCartList = async () => {
   try {
     const fetchResult = await fetch("/api/product/cart", {
@@ -114,10 +118,6 @@ function setPrice(id) {
       e.orderCount = parseInt(document.getElementById(`count-${id}`).value, 10);
     }
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> f1ffe5553c87219c89a2fd7a39ebd11018ad1331
   localStorage.setItem("products", JSON.stringify(List));
 }
 

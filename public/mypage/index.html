@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+<<<<<<< HEAD
+=======
+    <div class="header">
+      <img src="/images/doori.png" alt="doori" class="header-image" />
+      <p>DOORI MALL</p>
+    </div>
+>>>>>>> 24ae57a59530b1ffc6150c69c2dfa7fb20cfd84c
     <div class="center-div">
       <h2 id="nickname-display"></h2>
       <input
         type="text"
         id="nickname-input"
+<<<<<<< HEAD
         style="display: none; text-align: center"
       />
       <div class="nickname-password-wrapper">
@@ -20,5 +28,25 @@
       </div>
     </div>
     <script src="index.js"></script>
+=======
+        class="nickname-input"
+        style="display: none"
+      />
+      <div class="nickname-password-wrapper">
+        <button class="nickname" id="edit-nickname-button">닉네임 수정</button>
+        <button class="order">장바구니</button>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      document
+        .getElementById("edit-nickname-button")
+        .addEventListener("click", function () {
+          const nicknameInput = document.getElementById("nickname-input");
+          nicknameInput.style.display = "block";
+          nicknameInput.focus();
+        });
+    </script>
+>>>>>>> 24ae57a59530b1ffc6150c69c2dfa7fb20cfd84c
   </body>
 </html>

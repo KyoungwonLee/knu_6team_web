@@ -93,15 +93,15 @@ const renderProductList = async () => {
   productList.forEach((product) => {
     const itemElem = document.createElement("div");
     itemElem.innerHTML = `
-      <div>${product.title}</div>
+      <h2 class="title">${product.title}</h2>
       <div>
         <a href="./detail?id=${product.productId}">
           <img src="${product.imgUrl}" alt="${product.title}"/>
         </a>
       </div>
-      <div>[가격]: ${product.price}</div>
-      <div>[상세설명]: ${product.description}</div>
-      <div>[재고]: ${product.stock}</div>
+      <div class="price">[가격]: ${product.price}</div>
+      <div class="description">[상세설명]: ${product.description}</div>
+      <div class="stock">[재고]: ${product.stock}</div>
       <div>
         <input type="number" id="quantity-${product.productId}" min="1" value="1" />
         <button id="add-to-cart-${product.productId}">장바구니에 추가</button>

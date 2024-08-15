@@ -27,6 +27,7 @@ async function handleTokenVerification(response) {
   }
 }
 
+// 페이지가 로드되었을 때 실행되는 코드
 window.addEventListener("DOMContentLoaded", async () => {
   try {
     const userToken = localStorage.getItem("token");
