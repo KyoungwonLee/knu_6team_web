@@ -39,3 +39,8 @@ document.getElementById("move_my_page").onclick = function () {
 document.getElementById("move_sign_up").onclick = function () {
   window.location.href = "http://localhost:7999/signup";
 };
+
+//  상품 리스트
+document.getElementById("move_product").onclick = function () {
+  window.location.href = "http://localhost:7999/product";
+};
