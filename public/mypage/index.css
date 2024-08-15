@@ -90,8 +90,6 @@ p {
   transform: scale(0.98);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-<<<<<<< HEAD
-=======
 
 .nickname-input {
   margin: 20px auto;
@@ -102,4 +100,3 @@ p {
   border-radius: 5px;
   text-align: center;
 }
->>>>>>> 24ae57a59530b1ffc6150c69c2dfa7fb20cfd84c
