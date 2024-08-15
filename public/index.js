@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-  console.log("로그인 페이지 로딩 완료.");
+  console.log("메인 페이지 로딩 완료.");
 });
 
 // 초기 로그인 코드
@@ -38,4 +38,9 @@ document.getElementById("move_my_page").onclick = function () {
 // 회원가입
 document.getElementById("move_sign_up").onclick = function () {
   window.location.href = "http://localhost:7999/signup";
+};
+
+//  상품 리스트
+document.getElementById("move_product").onclick = function () {
+  window.location.href = "http://localhost:7999/product";
 };
