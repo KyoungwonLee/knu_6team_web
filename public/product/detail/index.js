@@ -1,7 +1,7 @@
 const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
 const id = params.get("id");
-
+// let cartList = [];
 // document.getElementById("buy").onclick = function (){
 //   window.location.href = "/cart";
 // }
@@ -29,6 +29,7 @@ const fetchProduct = async (id) => {
 const productWrapper = document.getElementById("product-wrapper");
 renderProduct = async () => {
   const v = await fetchProduct(id);
+
   if (!v) {
     alert("(!)상품 정보를 불러올 수 없습니다.");
     return null;
@@ -49,6 +50,10 @@ renderProduct = async () => {
     cartButtonElem.innerHTML = "장바구니";
     cartButtonElem.onclick = () => {
       alert("장바구니에 담겼습니다.");
+
+      let cartList = JSON.parse(localStorage.getItem("products")) || [];
+      cartList.push({ ...v });
+      localStorage.setItem("products", JSON.stringify(cartList));
     };
     const buyButtonElem = document.createElement("button");
     buyButtonElem.innerHTML = "구매하기";
