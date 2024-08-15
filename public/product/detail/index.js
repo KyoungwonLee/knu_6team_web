@@ -2,6 +2,10 @@ const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
 const id = params.get("id");
 
+const inputTag = document.createElement("input");
+inputTag.setAttribute("type", "number");
+inputTag.setAttribute("id", "order-count-input");
+// let cartList = [];
 // document.getElementById("buy").onclick = function (){
 //   window.location.href = "/cart";
 // }
@@ -27,8 +31,10 @@ const fetchProduct = async (id) => {
 };
 
 const productWrapper = document.getElementById("product-wrapper");
+
 renderProduct = async () => {
   const v = await fetchProduct(id);
+
   if (!v) {
     alert("(!)상품 정보를 불러올 수 없습니다.");
     return null;
@@ -48,8 +54,41 @@ renderProduct = async () => {
     const cartButtonElem = document.createElement("button");
     cartButtonElem.innerHTML = "장바구니";
     cartButtonElem.onclick = () => {
-      alert("장바구니에 담겼습니다.");
+      const orderCount = parseInt(
+        document.getElementById("order-count-input").value,
+        10
+      );
+      let cartList = JSON.parse(localStorage.getItem("products")) || [];
+
+      const duplicatedIndex = cartList.findIndex(
+        (cart) => cart.productId === v.productId
+      );
+      // 있으면 0 이상
+      // 없으면 -1
+
+      // []
+      // {}
+      //중복 확인
+      if (duplicatedIndex >= 0) {
+        cartList.forEach((e) => {
+          if (e.productId === v.productId) {
+            let sum = e.orderCount + orderCount;
+            if (sum > v.stock) {
+              alert("재고를 초과했습니다.");
+            } else {
+              e.orderCount += orderCount;
+              alert("장바구니에 담겼습니다.");
+            }
+          }
+        });
+      } else {
+        cartList.push({ ...v, orderCount: Number(orderCount) });
+        alert("장바구니에 담겼습니다.");
+      }
+
+      localStorage.setItem("products", JSON.stringify(cartList));
     };
+
     const buyButtonElem = document.createElement("button");
     buyButtonElem.innerHTML = "구매하기";
     buyButtonElem.onclick = () => {
@@ -57,8 +96,7 @@ renderProduct = async () => {
     };
     const labelTag = document.createElement("label");
     labelTag.innerHTML = "구매수량";
-    const inputTag = document.createElement("input");
-    inputTag.setAttribute("type", "number");
+
     inputTag.addEventListener("input", (e) => {
       const value = parseInt(inputTag.value, 10);
 
@@ -69,6 +107,7 @@ renderProduct = async () => {
         inputTag.value = v.stock;
       }
     });
+
     const brTag = document.createElement("br");
     itemElem.append(labelTag);
     itemElem.append(inputTag);
@@ -78,4 +117,5 @@ renderProduct = async () => {
     productWrapper.append(itemElem);
   }
 };
+
 renderProduct();

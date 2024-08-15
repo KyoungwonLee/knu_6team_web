@@ -14,8 +14,16 @@ const getProduct = async (productId) => {
     return product;
   } catch (error) {}
 };
+const getProductByUid = async (productId) => {
+  try {
+    const product = await Product.findById(productId);
+    console.log(product);
+    return product;
+  } catch (error) {}
+};
 
 module.exports = {
   getProductList,
   getProduct,
+  getProductByUid,
 };
