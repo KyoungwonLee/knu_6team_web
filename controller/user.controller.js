@@ -4,14 +4,8 @@ const { createUser, getUserByEmail } = require("../service/user.service");
 const userController = require("express").Router();
 
 userController.post("/token", (req, res) => {
-  const { tokenKey } = req.body;
-  console.log(req.body); //확인
-  try {
-    const tokenVerify = jwt.verify(tokenKey, process.env.JWT_SECRET); //검증
-
   const { userToken } = req.body;
   console.log("", userToken); //확인
-  
   try {
     const tokenVerify = jwt.verify(userToken, process.env.JWT_SECRET); //검증
     console.log(tokenVerify);
@@ -27,7 +21,7 @@ userController.post("/token", (req, res) => {
   } catch (err) {
     //err
   }
-}});
+});
 
 userController.post("/signin", async (req, res) => {
   const body = req.body;
@@ -101,6 +95,21 @@ userController.post("/", async (req, res) => {
     return res.status(201).json({ result: true });
   } catch (err) {
     return res.status(500).json({ result: false });
+  }
+});
+
+// [client] [get] /api/user/me
+userController.get("/me", (req, res) => {
+  try {
+    const token = req.headers["authorization"];
+    console.log({ token });
+    const userData = jwt.decode(token);
+    console.log(userData);
+
+    return res.json({ result: true, nickname: userData.nickname });
+  } catch (err) {
+    console.log(err);
+    return res.json({ result: false, nickname: null });
   }
 });
 
