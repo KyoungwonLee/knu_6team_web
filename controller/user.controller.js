@@ -81,6 +81,7 @@ userController.post("/", async (req, res) => {
       .status(400)
       .json({ isError: true, message: "잘못된 비밀번호 형식입니다." });
   }
+  //  비밀번호 암호화
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
 

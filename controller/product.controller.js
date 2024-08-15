@@ -14,30 +14,22 @@ const productController = require("express").Router();
 //   return product;
 // });
 
-productController.get("/",async (req, res) => {
+productController.get("/", async (req, res) => {
   //상품 전체 조회, 가져온 데이터를 res.json에 싫어 클라이어트로 보낸다.
-  try{
-    const productList  = await getProductList();
+  try {
+    const productList = await getProductList();
 
-  return res.json({ result: true, data: productList });
-
-  }catch(err){
-
-  }
-  
+    return res.json({ result: true, data: productList });
+  } catch (err) {}
 });
-productController.get("/detail/:id",async (req,res)=>{
-  try{
+productController.get("/detail/:id", async (req, res) => {
+  try {
     const productId = req.params.id;
-    console.log({productId})
+    console.log({ productId });
     const product = await getProduct(productId);
 
-  return res.json({ result: true, data: product });
-  }catch(err){
-
-  }
-  
-})
-
+    return res.json({ result: true, data: product });
+  } catch (err) {}
+});
 
 module.exports = productController;
