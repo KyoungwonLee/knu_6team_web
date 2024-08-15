@@ -5,8 +5,13 @@ const { getUserByEmail } = require("./user.service");
 const createOrder = async (order) => {
   try {
     // user의 _id를 가져와야함
+    console.log("order ====> \n", order);
     const user = await getUserByEmail(order.buyerEmail);
+    console.log("user ====> \n", user);
     const userId = user._id;
+    if (!userId) {
+      throw new Error("(!) UserId 없음.");
+    }
     /**
      * order = {
      *   ...data,
@@ -18,6 +23,7 @@ const createOrder = async (order) => {
     console.log(createdOrder);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };
 

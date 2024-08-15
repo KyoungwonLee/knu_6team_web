@@ -40,12 +40,6 @@ const renderCartList = async () => {
           <div>[상세설명]: ${v.description}</div>
           <div>[가격]: ${v.price}</div>
           <div>[재고]: ${v.stock}</div>
-         
-              
-
-          
-          
-          
       `;
 
     const remove = document.createElement("button");
