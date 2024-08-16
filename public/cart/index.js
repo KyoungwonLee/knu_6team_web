@@ -80,10 +80,20 @@ const renderCartList = async () => {
 
     cartListWrapper.append(itemElem);
   });
+  const buydiv = document.createElement("div");
+
+  const buybtn = document.createElement("button");
+  buybtn.setAttribute("id", "buy_btn");
+  buybtn.innerHTML = "결제하기";
+  buybtn.addEventListener("click", () => {
+    window.location.href = "/order";
+  });
 
   totPrice.setAttribute("id", "price");
   totPrice.innerHTML = `총 금액 = ${totalPrice()}`;
-  cartListWrapper.append(totPrice);
+  buydiv.append(totPrice);
+  buydiv.append(buybtn);
+  cartListWrapper.append(buydiv);
 };
 
 function totalPrice() {

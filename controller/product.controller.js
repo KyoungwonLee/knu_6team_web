@@ -40,52 +40,8 @@ productController.get("/detail-by-uid/:id", async (req, res) => {
     const productId = req.params.id;
 
     const product = await getProductByUid(productId);
-    console.log(product);
+    console.log("안녕", product);
     return res.json({ result: true, data: product });
-  } catch (err) {}
-});
-
-productController.post("/cart", async (req, res) => {
-  try {
-    const cart = req.body;
-    let cartarray = [];
-    cart.forEach((v) => {
-      cartarray.push(v);
-    });
-    return res.json({ result: true, data: cartarray });
-  } catch (err) {}
-});
-
-productController.post("/cart", async (req, res) => {
-  try {
-    const cart = req.body;
-    let cartarray = [];
-    cart.forEach((v) => {
-      cartarray.push(v);
-    });
-    return res.json({ result: true, data: cartarray });
-  } catch (err) {}
-});
-
-productController.post("/cart", async (req, res) => {
-  try {
-    const cart = req.body;
-    let cartarray = [];
-    cart.forEach((v) => {
-      cartarray.push(v);
-    });
-    return res.json({ result: true, data: cartarray });
-  } catch (err) {}
-});
-
-productController.post("/cart", async (req, res) => {
-  try {
-    const cart = req.body;
-    let cartarray = [];
-    cart.forEach((v) => {
-      cartarray.push(v);
-    });
-    return res.json({ result: true, data: cartarray });
   } catch (err) {}
 });
 

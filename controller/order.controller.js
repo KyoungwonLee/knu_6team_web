@@ -9,8 +9,9 @@ orderController.post("/", async (req, res) => {
     recipientName,
     recipientAddress,
     recipientPhoneNum,
+    products,
   } = req.body;
-  console.log(req.body);
+  console.log("안녕", req.body);
 
   const order = {
     buyerName,
@@ -19,6 +20,7 @@ orderController.post("/", async (req, res) => {
     recipientName,
     recipientAddress,
     recipientPhoneNum,
+    products,
   };
   try {
     await createOrder(order);
