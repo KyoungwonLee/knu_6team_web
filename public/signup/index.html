@@ -1,24 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="./index.js" defer></script>
-    <title>DOORI MALL - 회원가입</title>
   </head>
   <body>
-    <div class="header">
-      <img src="/images/doori.png" alt="doori" class="header-image" />
-      <p>DOORI MALL</p>
-    </div>
-
-    <!-- 회원가입 박스 추가 -->
-    <div class="signup-box">
-      <input id="signup_email" placeholder="email" />
-      <input id="signup_nickname" placeholder="nickname" />
-      <input id="signup_password" type="password" placeholder="password" />
-      <button id="signup_button">회원가입</button>
+    <header>
+      <nav class="fixed-top-menu">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <div>
+      <p id="title">SIGN UP</p>
+      <input id="signup_email" placeholder="Email" />
+      <input id="signup_password" type="password" placeholder="Password" />
+      <input id="signup_nickname" placeholder="Nickname" />
+      <button id="signup_button">로그인</button>
     </div>
   </body>
 </html>

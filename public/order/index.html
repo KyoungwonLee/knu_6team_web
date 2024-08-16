@@ -8,40 +8,47 @@
     <title>결제 페이지</title>
   </head>
   <body>
-    <div class="header">
-      <img src="/images/doori.png" alt="doori" class="header-image" />
-      <p>DOORI MALL</p>
-    </div>
+    <header>
+      <nav class="fixed-top-menu">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
     <header>
       <h1>결제 페이지</h1>
     </header>
     <section class="form-container">
       <div class="form-content">
         <div class="buyer-info">
-          <h3>[구매자 정보]</h3>
-          <label for="buyer_name">이름:</label>
+          <h2>구매자 정보</h2>
+          <label for="buyer_name">이름</label>
           <input type="text" name="buyer_name" id="buyer_name" />
           <br />
-          <label for="buyer_email">이메일:</label>
+          <label for="buyer_email">이메일</label>
           <input type="email" name="buyer_email" id="buyer_email" />
           <br />
-          <label for="buyer_phoneNum">휴대폰 번호:</label>
+          <label for="buyer_phoneNum">휴대폰 번호</label>
           <input type="tel" name="buyer_phoneNum" id="buyer_phoneNum" />
         </div>
 
         <div class="recipient-info">
-          <h3>[받는사람 정보]</h3>
-          <label for="recipient_name">이름:</label>
+          <h2>받는사람 정보</h2>
+          <label for="recipient_name">이름</label>
           <input type="text" name="recipient_name" id="recipient_name" />
           <br />
-          <label for="recipient_address">주소:</label>
+          <label for="recipient_address">주소</label>
           <input type="text" name="recipient_address" id="recipient_address" />
           <br />
-          <label for="recipient_phoneNum">연락처:</label>
+          <label for="recipient_phoneNum">연락처</label>
           <input type="tel" name="recipient_phoneNum" id="recipient_phoneNum" />
         </div>
       </div>
     </section>
+    <h2 id="buylist">구매 목록</h2>
     <section id="product-wrapper"></section>
   </body>
 </html>

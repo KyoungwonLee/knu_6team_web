@@ -39,13 +39,13 @@ renderProduct = async () => {
   } else {
     const itemElem = document.createElement("div");
     itemElem.innerHTML = `
-            <div>${v.title}</div>
+            <h2>${v.title}</h2>
             <div>
                 <img src="${v.imgUrl}"/>
             </div>
-            <div>[가격]: ${v.price}</div>
-            <div>[상세설명]: ${v.description}</div>
-            <div>[재고]: ${v.stock}</div>
+            <div class="price">[가격]: ${v.price}</div>
+            <div class="description">[상세설명]: ${v.description}</div>
+            <div class="stock">[재고]: ${v.stock}</div>
                 
             `;
     // <button id="cart" onclick="alert('장바구니에 담겼습니다.')">장바구니</button>

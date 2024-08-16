@@ -1,38 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Page</title>
+    <title>마이 페이지</title>
+    <script src="./index.js"></script>
     <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="header">
-      <img src="/images/doori.png" alt="doori" class="header-image" />
-      <p>DOORI MALL</p>
-    </div>
-    <div class="center-div">
-      <h2 id="nickname-display"></h2>
-      <input
-        type="text"
-        id="nickname-input"
-        class="nickname-input"
-        style="display: none"
-      />
-      <div class="nickname-password-wrapper">
-        <button class="nickname" id="edit-nickname-button">닉네임 수정</button>
-        <button class="order">장바구니</button>
+    <header>
+      <nav class="fixed-top-menu">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>My Page</h1>
+      <div class="profile">
+        <img src="\photo\profile.jpeg" alt="프로필 사진" class="profile-pic" />
+        <input
+          type="text"
+          id="nickname-input"
+          class="nickname-input"
+          style="display: none"
+        />
+        <div class="nickname-password-wrapper">
+          <p id="email">
+            <strong>Email</strong>
+            <span id="email-display"></span>
+          </p>
+          <p id="nickname">
+            <strong>닉네임</strong>
+            <span id="nickname-display">Nickname </span>
+          </p>
+        </div>
+      </div> 
+        <button id="cart-btn"><i class="btn" id="cart"></i> 장바구니</button>
       </div>
     </div>
-    <script src="index.js"></script>
-    <script>
-      document
-        .getElementById("edit-nickname-button")
-        .addEventListener("click", function () {
-          const nicknameInput = document.getElementById("nickname-input");
-          nicknameInput.style.display = "block";
-          nicknameInput.focus();
-        });
-    </script>
   </body>
 </html>

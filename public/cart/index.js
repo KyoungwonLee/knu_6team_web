@@ -31,15 +31,15 @@ const renderCartList = async () => {
   cartList.data.forEach((v, index) => {
     const itemElem = document.createElement("div");
     itemElem.innerHTML = `
-          <div>
+          <div id="prduct_title">
             <a href="../product/detail?id=${v.productId}">${v.title}</a>
           </div>
           <div>
               <img src="${v.imgUrl}"/>
           </div>
-          <div>[상세설명]: ${v.description}</div>
-          <div>[가격]: ${v.price}</div>
-          <div>[재고]: ${v.stock}</div>
+          <div id="description">[상세설명]: ${v.description}</div>
+          <div id="product_price">[가격]: ${v.price.toLocaleString()}</div>
+          <div id="stock">[재고]: ${v.stock}</div>
       `;
 
     const remove = document.createElement("button");
@@ -47,13 +47,15 @@ const renderCartList = async () => {
     remove.addEventListener("click", () => {
       console.log("index");
       removeFromCart(index);
-      totPrice.innerHTML = `총 금액 = ${totalPrice(c)}`;
+      totPrice.innerHTML = `총 금액 = ${totalPrice(c).toLocaleString()}`;
     });
     remove.innerHTML = "삭제";
     const countInputElem = document.createElement("input");
     const countLabel = document.createElement("label");
+
     countLabel.innerHTML = "수량";
     countInputElem.setAttribute("id", `count-${v.productId}`);
+
     countInputElem.setAttribute("type", "number");
     countInputElem.setAttribute("data-index", index);
     countInputElem.setAttribute("min", 1);
@@ -69,7 +71,9 @@ const renderCartList = async () => {
       totPrice.innerHTML = `총 금액 = ${totalPrice()}`;
     });
     const priceElem = document.createElement("div");
-    priceElem.innerHTML = `[가격합계]: ${v.price * v.orderCount}`;
+    priceElem.innerHTML = `[가격합계]: ${(
+      v.price * v.orderCount
+    ).toLocaleString()}`;
     priceElem.setAttribute("id", `price-${v.productId}`);
 
     itemElem.append(priceElem);
@@ -81,6 +85,7 @@ const renderCartList = async () => {
     cartListWrapper.append(itemElem);
   });
   const buydiv = document.createElement("div");
+  buydiv.setAttribute("id", "fixed-footer");
 
   const buybtn = document.createElement("button");
   buybtn.setAttribute("id", "buy_btn");
@@ -90,7 +95,7 @@ const renderCartList = async () => {
   });
 
   totPrice.setAttribute("id", "price");
-  totPrice.innerHTML = `총 금액 = ${totalPrice()}`;
+  totPrice.innerHTML = `총 금액 = ${totalPrice().toLocaleString()}`;
   buydiv.append(totPrice);
   buydiv.append(buybtn);
   cartListWrapper.append(buydiv);

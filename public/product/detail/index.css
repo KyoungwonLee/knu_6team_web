@@ -1,11 +1,42 @@
-body {
+.fixed-top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: lightslategray;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.fixed-top-menu ul {
+  list-style: none;
+}
+
+.fixed-top-menu li {
+  display: inline;
+  margin: 0 15px;
+  color: #405d72;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.fixed-top-menu li:hover {
+  color: white;
+}
+
+body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  background-color: #f4f4f4;
+  flex-direction: column;
   align-items: center;
+  min-height: 100vh; /* 화면 높이보다 클 수 있도록 설정 */
   margin: 0;
-  padding: 0;
+  padding: 0; /* 패딩 제거 */
+  box-sizing: border-box; /* 박스 사이즈를 border-box로 설정 */
 }
 
 .header {
@@ -28,22 +59,23 @@ p {
 }
 
 #product-wrapper {
+  margin-top: 50px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   padding: 24px;
-  max-width: 600px; /* 확대된 너비 */
-  width: 100%;
+  width: 350px;
   display: flex; /* 플렉스 컨테이너로 변경 */
   gap: 24px; /* 이미지와 내용 사이의 간격 */
-  margin: 0 auto;
-  align-items: flex-start; /* 내용이 위쪽에 정렬되도록 설정 */
+  align-items: center;
+  flex-direction: column; /* 내부 요소를 세로로 나열 */
 }
 
 #product-wrapper img {
   max-width: 300px; /* 이미지 최대 너비 조정 */
   height: auto;
   border-radius: 8px;
+  margin-left: 25px;
 }
 
 #product-details {
@@ -69,9 +101,10 @@ h2 {
 .price {
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: #e74c3c;
+  color: midnightblue;
   font-weight: bold;
   margin-bottom: 12px;
+  margin-left: 30px;
 }
 
 .stock {
@@ -87,16 +120,19 @@ h2 {
   gap: 12px;
 }
 
-.product-button {
+button {
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
   padding: 12px 24px;
   border-radius: 8px;
   font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   text-decoration: none;
   font-weight: 600;
-  background-color: #1e6b7b;
+  background-color: #405d72;
   color: white;
-  border: 2px solid #1e6b7b;
+  border: 2px solid #405d72;
   transition: background-color 0.25s, color 0.25s;
   cursor: pointer;
   text-align: center;

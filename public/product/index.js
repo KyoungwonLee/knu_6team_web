@@ -18,57 +18,6 @@ const fetchProductList = async () => {
   }
 };
 
-// // Save the cart to local storage
-// const saveCart = (cart) => {
-//   localStorage.setItem("cart", JSON.stringify(cart));
-// };
-
-// // Load the cart from local storage
-// const loadCart = () => {
-//   return JSON.parse(localStorage.getItem("cart")) || [];
-// };
-
-// Add an item to the cart
-// const addToCart = (productId, quantity) => {
-//   let cart = loadCart();
-//   const existingItemIndex = cart.findIndex(
-//     (item) => item.productId === productId
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     // Update quantity if item already exists
-//     cart[existingItemIndex].quantity += quantity;
-//   } else {
-//     // Add new item if it does not exist
-//     cart.push({ productId, quantity });
-//   }
-
-//   saveCart(cart);
-// };
-
-// Display the cart summary
-// const displayCartSummary = () => {
-//   const cart = loadCart();
-//   const cartItems = document.getElementById("cart-items");
-//   cartItems.innerHTML = "";
-
-//   if (cart.length === 0) {
-//     cartItems.innerHTML = "<li>장바구니에 담긴 물건이 없습니다.</li>";
-//     return;
-//   }
-
-//   // Fetch product details for cart summary
-//   const productList = loadProductList();
-//   cart.forEach((cartItem) => {
-//     const product = productList.find((p) => p.productId === cartItem.productId);
-//     if (product) {
-//       const listItem = document.createElement("li");
-//       listItem.textContent = `${product.title} - 수량: ${cartItem.orderCount}`;
-//       cartItems.appendChild(listItem);
-//     }
-//   });
-// };
-
 // Load the product list for displaying in the cart summary
 const loadProductList = () => {
   return JSON.parse(localStorage.getItem("productList")) || [];

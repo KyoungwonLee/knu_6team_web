@@ -6,6 +6,7 @@ const recipientAddress = document.getElementById("recipient_address");
 const recipientPhoneNum = document.getElementById("recipient_phoneNum");
 const btn = document.createElement("button");
 const orderButton = document.getElementById("order_button");
+const totPrice = document.createElement("div");
 // cart에 담긴 상품 id 추출
 const product = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -42,7 +43,7 @@ const productWrapper = document.getElementById("product-wrapper");
 renderProduct = async () => {
   // productIdList
   const v = JSON.parse(localStorage.getItem("products")) || [];
-
+  let totalPrice = 0;
   btn.setAttribute("id", "id");
   btn.innerHTML = "결제하기";
 
@@ -52,18 +53,28 @@ renderProduct = async () => {
   } else {
     v.forEach((e) => {
       const itemElem = document.createElement("div");
+      totalPrice += e.price * e.orderCount;
       itemElem.innerHTML = `
             <div>${e.title}</div>
-            <div>[가격]: ${e.price}</div>
+            <div>[가격]: ${e.price.toLocaleString()}</div>
             <div>[수량]: ${e.orderCount}</div>
             <div>[상세설명]: ${e.description}</div>
-            <div>[총 가격]: ${e.price * e.orderCount}</div>
+            <div>[총 가격]: ${(e.price * e.orderCount).toLocaleString()}</div>
             `;
 
       productWrapper.append(itemElem);
     });
   }
-  productWrapper.append(btn);
+  const buydiv = document.createElement("div");
+  buydiv.setAttribute("id", "fixed-footer");
+  totPrice.setAttribute("id", "price");
+  totPrice.innerHTML = `총 금액  ${totalPrice.toLocaleString()}`;
+  btn.setAttribute("id", "buy_btn");
+  btn.innerHTML = "결제하기";
+  buydiv.append(totPrice);
+  buydiv.append(btn);
+
+  productWrapper.append(buydiv);
 };
 renderProduct();
 //여기
@@ -101,6 +112,8 @@ btn.addEventListener("click", async () => {
     // http status code === 2XX
     if (orderResult.ok) {
       alert("결제 성공");
+
+      window.location.href = "/";
     } else {
       alert("(!)결제 실패");
     }
