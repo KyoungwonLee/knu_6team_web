@@ -1,3 +1,4 @@
+const Product = require("../schema/product.schema");
 const {
   getProductList,
   getProduct,
@@ -5,10 +6,9 @@ const {
 } = require("../service/product.service");
 
 const productController = require("express").Router();
-
 // const dummyData = Array.from({ length: 30 }, (_, index) => {
 //   const product = {
-
+//     productId: index,
 //     title: `product-title-${index + 1}`,
 //     description: `product-description-${index + 1}`,
 //     imgUrl: `https://picsum.photos/id/${index + 1}/200/300`,
@@ -16,6 +16,13 @@ const productController = require("express").Router();
 //     stock: Math.ceil(Math.random() * 100),
 //   };
 //   return product;
+// });
+
+// productController.get("/dummy-insert", async (req, res) => {
+//   for (const prod of dummyData) {
+//     await Product.create(prod);
+//   }
+//   return res.json({ result: true });
 // });
 
 productController.get("/", async (req, res) => {

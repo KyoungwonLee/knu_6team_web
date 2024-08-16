@@ -28,22 +28,22 @@ loginButton.addEventListener("click", async () => {
 //  로그인 화면 이동
 // 로그인 화면 이동
 document.getElementById("move_sign_in").onclick = function () {
-  window.location.href = "http://localhost:7999/signin";
+  window.location.href = "/signin";
 };
 
 // 마이페이지 이동
 document.getElementById("move_my_page").onclick = function () {
-  window.location.href = "http://localhost:7999/mypage";
+  window.location.href = "/mypage";
 };
 
 // 회원가입 화면 이동
 document.getElementById("move_sign_up").onclick = function () {
-  window.location.href = "http://localhost:7999/signup";
+  window.location.href = "/signup";
 };
 
 // 상품 리스트 화면 이동
 document.getElementById("move_product").onclick = function () {
-  window.location.href = "http://localhost:7999/product";
+  window.location.href = "/product";
 };
 
 // 로그인 상태 체크
@@ -62,5 +62,5 @@ if (token) {
 document.getElementById("logout_button").onclick = function () {
   localStorage.removeItem("token");
 
-  window.location.href = "http://localhost:7999/";
+  window.location.href = "/";
 };

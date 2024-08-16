@@ -25,7 +25,7 @@ async function handleTokenVerification(response) {
     if (localStorage.getItem("token")) {
       localStorage.removeItem("token");
     }
-    window.location.href = "http://localhost:7999/signin";
+    window.location.href = "/signin";
   }
 }
 
@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     const btn = document.getElementById("cart-btn");
     btn.addEventListener("click", () => {
-      window.location.href = "http://localhost:7999/cart";
+      window.location.href = "/cart";
     });
     const userToken = localStorage.getItem("token");
     console.log("token", userToken);
