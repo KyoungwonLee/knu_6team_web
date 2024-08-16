@@ -1,6 +1,36 @@
-body {
+.fixed-top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: lightslategray;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.fixed-top-menu ul {
+  list-style: none;
+}
+
+.fixed-top-menu li {
+  display: inline;
+  margin: 0 15px;
+  color: #405d72;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.fixed-top-menu li:hover {
+  color: white;
+}
+
+body {
+  background-color: #f7e7dc;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -28,12 +58,13 @@ p {
 }
 
 .form-container {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
   background-color: white;
   border-radius: 8px;
   padding: 20px;
   width: 80%;
   max-width: 600px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,35 +79,90 @@ p {
   margin-bottom: 20px;
 }
 
+input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
 .buyer-info label,
 .recipient-info label {
   display: inline-block;
-  width: 100px; /* Adjust width as needed */
-  text-align: right;
-  margin-right: 10px;
+  width: 200px; /* Adjust width as needed */
+  font-size: 13px;
+  font-weight: bold;
 }
 
-.btn {
-  padding: 15px 30px;
-  margin: 20px auto 0 auto; /* Center the button */
-  border-radius: 8px;
-  font-family: "Arial", sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.25s;
-  background-color: #1e6b7b;
-  color: white;
+#product-wrapper {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 24px;
+  width: 350px;
+  display: flex; /* 플렉스 컨테이너로 변경 */
+  gap: 24px; /* 이미지와 내용 사이의 간격 */
+  align-items: center;
+  flex-direction: column; /* 내부 요소를 세로로 나열 */
+  margin-bottom: 100px;
+}
+
+.buylist {
+  margin-top: 100px;
+}
+
+button {
+  padding: 12px 20px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  width: 60%; /* Make the button wider */
-  max-width: 300px; /* Limit the maximum width */
-  text-align: center; /* Center the text within the button */
+  background-color: #405d72;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 12px;
 }
 
-.btn:hover {
-  color: #1e6b7b;
-  background: aliceblue;
-  animation: 1s linear 0 ChangeButton;
+button:hover {
+  background-color: #405d72;
   transform: scale(1.1);
+}
+
+main {
+  margin-bottom: 300px; /* 하단 바의 높이와 맞추기 위한 여백 */
+}
+
+#fixed-footer {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000; /* 다른 콘텐츠 위에 표시되도록 설정 */
+}
+
+#price {
+  font-weight: bold;
+  font-size: 15px;
 }

@@ -1,4 +1,4 @@
-async function getUserNickname() {
+async function getUserInfo() {
   const getResult = await fetch("/api/user/me", {
     headers: {
       authorization: localStorage.getItem("token"),
@@ -6,8 +6,7 @@ async function getUserNickname() {
   });
   if (getResult.ok) {
     const result = await getResult.json();
-    const nickname = result.nickname;
-    return nickname;
+    return result.data;
   }
   return "";
 }
@@ -15,10 +14,13 @@ async function getUserNickname() {
 async function handleTokenVerification(response) {
   if (response.isVerify) {
     console.log("Token is valid. Access granted.");
-    const nickname = await getUserNickname();
-    console.log(nickname);
+    const userInfo = await getUserInfo();
+
+    const emailDisplay = document.getElementById("email-display");
     const nicknameDisplay = document.getElementById("nickname-display");
-    nicknameDisplay.innerHTML = nickname;
+
+    emailDisplay.innerHTML = userInfo.email;
+    nicknameDisplay.innerHTML = userInfo.nickname;
   } else {
     if (localStorage.getItem("token")) {
       localStorage.removeItem("token");
@@ -30,6 +32,10 @@ async function handleTokenVerification(response) {
 // 페이지가 로드되었을 때 실행되는 코드
 window.addEventListener("DOMContentLoaded", async () => {
   try {
+    const btn = document.getElementById("cart-btn");
+    btn.addEventListener("click", () => {
+      window.location.href = "http://localhost:7999/cart";
+    });
     const userToken = localStorage.getItem("token");
     console.log("token", userToken);
 
@@ -50,47 +56,4 @@ window.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     console.error(err);
   }
-});
-
-// 닉네임 수정 관련 코드
-document
-  .getElementById("edit-nickname-button")
-  .addEventListener("click", function () {
-    toggleNicknameEdit();
-  });
-
-document
-  .getElementById("nickname-input")
-  .addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      toggleNicknameEdit();
-    }
-  });
-
-function toggleNicknameEdit() {
-  const nicknameDisplay = document.getElementById("nickname-display");
-  const nicknameInput = document.getElementById("nickname-input");
-
-  if (nicknameInput.style.display === "none") {
-    nicknameInput.value = nicknameDisplay.textContent;
-    nicknameDisplay.style.display = "none";
-    nicknameInput.style.display = "block";
-    nicknameInput.focus();
-  } else {
-    const newNickname = nicknameInput.value;
-    nicknameDisplay.textContent = newNickname;
-    // localStorage.setItem("nickname", newNickname);
-
-    nicknameInput.style.display = "none";
-    nicknameDisplay.style.display = "block";
-  }
-}
-
-// 장바구니 버튼 클릭 시 장바구니 페이지로 이동
-document.addEventListener("DOMContentLoaded", function () {
-  const orderButton = document.querySelector(".order");
-
-  orderButton.addEventListener("click", function () {
-    window.location.href = "/cart";
-  });
 });

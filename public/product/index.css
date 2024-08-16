@@ -1,5 +1,34 @@
-body {
+.fixed-top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: lightslategray;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.fixed-top-menu ul {
+  list-style: none;
+}
+
+.fixed-top-menu li {
+  display: inline;
+  margin: 0 15px;
+  color: #405d72;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.fixed-top-menu li:hover {
+  color: white;
+}
+
+body {
+  background-color: #fff8f3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,12 +36,6 @@ body {
   margin: 0;
   padding: 0; /* 패딩 제거 */
   box-sizing: border-box; /* 박스 사이즈를 border-box로 설정 */
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px; /* 하단 여백 */
 }
 
 .header-image {
@@ -59,6 +82,7 @@ p {
   overflow-x: auto; /* 가로 스크롤 가능하게 설정 */
   overflow-y: auto; /* 세로 스크롤 가능하게 설정 */
   box-sizing: border-box;
+  margin-top: 100px;
   margin-bottom: 16px; /* 아래쪽 여백 추가 */
 }
 
@@ -111,7 +135,7 @@ h2 {
 .price {
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: #e74c3c;
+  color: cornflowerblue;
   font-weight: bold;
   margin-bottom: 12px;
 }
@@ -121,4 +145,31 @@ h2 {
   font-size: 16px;
   color: #666;
   margin-bottom: 12px;
+}
+
+#product-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px; /* 간격 조정 */
+  padding: 16px; /* 여백 추가 */
+}
+
+#product-list-wrapper > div {
+  border: 1px solid #ddd; /* 테두리 추가 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  padding: 16px; /* 안쪽 여백 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  background-color: #fff; /* 배경색 추가 */
+  text-align: center; /* 가운데 정렬 */
+}
+.title {
+  font-family: "Arial", sans-serif; /* 글꼴 설정 */
+  font-size: 16px; /* 기본 폰트 크기 */
+  color: 333;
+}
+
+#product-list-wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
 }

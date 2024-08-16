@@ -119,6 +119,7 @@ userController.post("/", async (req, res) => {
 });
 
 // [client] [get] /api/user/me
+
 userController.get("/me", (req, res) => {
   try {
     const token = req.headers["authorization"];
@@ -126,11 +127,10 @@ userController.get("/me", (req, res) => {
     const userData = jwt.decode(token);
     console.log(userData);
 
-    return res.json({ result: true, nickname: userData.nickname });
+    return res.json({ result: true, data: userData });
   } catch (err) {
     console.log(err);
-    return res.json({ result: false, nickname: null });
+    return res.json({ result: false, data: null });
   }
 });
-
 module.exports = userController;

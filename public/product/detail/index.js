@@ -39,13 +39,13 @@ renderProduct = async () => {
   } else {
     const itemElem = document.createElement("div");
     itemElem.innerHTML = `
-            <div>${v.title}</div>
+            <h2>${v.title}</h2>
             <div>
                 <img src="${v.imgUrl}"/>
             </div>
-            <div>[가격]: ${v.price}</div>
-            <div>[상세설명]: ${v.description}</div>
-            <div>[재고]: ${v.stock}</div>
+            <div class="price">[가격]: ${v.price}</div>
+            <div class="description">[상세설명]: ${v.description}</div>
+            <div class="stock">[재고]: ${v.stock}</div>
                 
             `;
     // <button id="cart" onclick="alert('장바구니에 담겼습니다.')">장바구니</button>
@@ -118,34 +118,34 @@ renderProduct = async () => {
   const itemElem = document.createElement("div");
   itemElem.id = "product-details";
 
-  itemElem.innerHTML = `
-    <h2>${product.title}</h2>
-    <div class="price">가격: ${product.price}</div>
-    <div class="description">상세설명: ${product.description}</div>
-    <div class="stock">재고: ${product.stock}</div>
-    <div class="button-container">
-      <label for="quantity">구매수량:</label>
-      <input id="quantity" type="number" min="1" max="${product.stock}" value="1" />
-      <button class="product-button" id="cart">장바구니</button>
-      <button class="product-button" id="buy">구매하기</button>
-    </div>
-  `;
+  // itemElem.innerHTML = `
+  //   <h2>${product.title}</h2>
+  //   <div class="price">가격: ${product.price}</div>
+  //   <div class="description">상세설명: ${product.description}</div>
+  //   <div class="stock">재고: ${product.stock}</div>
+  //   <div class="button-container">
+  //     <label for="quantity">구매수량:</label>
+  //     <input id="quantity" type="number" min="1" max="${product.stock}" value="1" />
+  //     <button class="product-button" id="cart">장바구니</button>
+  //     <button class="product-button" id="buy">구매하기</button>
+  //   </div>
+  // `;
 
-  const imgElem = document.createElement("img");
-  imgElem.src = product.imgUrl;
-  imgElem.alt = product.title;
+  // const imgElem = document.createElement("img");
+  // imgElem.src = product.imgUrl;
+  // imgElem.alt = product.title;
 
-  productWrapper.innerHTML = ""; // Clear existing content
-  productWrapper.append(imgElem);
-  productWrapper.append(itemElem);
+  // productWrapper.innerHTML = ""; // Clear existing content
+  // productWrapper.append(imgElem);
+  // productWrapper.append(itemElem);
 
-  // Event listeners for buttons
-  itemElem.querySelector("#cart").onclick = () => {
-    alert("장바구니에 담겼습니다.");
-  };
-  itemElem.querySelector("#buy").onclick = () => {
-    window.location.href = "/cart";
-  };
+  // // Event listeners for buttons
+  // itemElem.querySelector("#cart").onclick = () => {
+  //   alert("장바구니에 담겼습니다.");
+  // };
+  // itemElem.querySelector("#buy").onclick = () => {
+  //   window.location.href = "/cart";
+  // };
 };
 
 renderProduct();

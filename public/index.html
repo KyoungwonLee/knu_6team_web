@@ -1,23 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="./index.js" defer></script>
-    <title>DOORI MALL</title>
   </head>
   <body>
-    <div class="header">
-      <img src="/images/doori.png" alt="doori" class="header-image" />
-      <p>DOORI MALL</p>
+    <div class="container">
+      <div class="left-section">
+        <div class="logo">6 TEAM</div>
+        <h1>
+          Welcome <br />
+          to the shopping mall.
+        </h1>
+        <p>
+          Team Member | <br />
+          Kim Ji Soo, Park Gyeong Min, Lee Kyoung Won, Lim Gi Young, Yoo Da Yeon
+        </p>
+        <div class="buttons">
+          <button id="move_sign_in">SIGN IN</button>
+          <button id="move_my_page">MY PAGE</button>
+          <button id="move_sign_up">SIGN UP</button>
+          <button id="move_product">PRODUCTS</button>
+          <button id="logout_button" class="btn" style="display: none">
+            LOG OUT
+          </button>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="color-wave"></div>
+      </div>
     </div>
-    <button id="move_sign_in" class="btn">SIGN IN</button>
-    <button id="move_my_page" class="btn" style="display: none">MY PAGE</button>
-    <button id="move_sign_up" class="btn">SIGN UP</button>
-    <button id="move_product" class="btn">상품 보러가기</button>
-    <button id="logout_button" class="btn" style="display: none">
-      LOG OUT
-    </button>
   </body>
 </html>
